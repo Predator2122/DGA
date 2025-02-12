@@ -1,0 +1,26 @@
+name: Ejecutar Script Cada 10 Minutos
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"  # Se ejecuta cada 10 minutos
+
+jobs:
+  ejecutar-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3  # Descarga el código del repo
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Instalar dependencias
+        run: pip install requests
+
+      - name: Ejecutar el script con credenciales seguras
+        env:
+          THINGSPEAK_API_KEY: ${{ secrets.THINGSPEAK_API_KEY }}
+          MOP_PASSWORD: ${{ secrets.MOP_PASSWORD }}
+        run: python script.py
