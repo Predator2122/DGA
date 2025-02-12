@@ -53,14 +53,14 @@ if response.status_code == 200:
             # Enviar la medición a la API de MOP
             response_mop = requests.post(API_URL, headers=headers, data=json.dumps(payload))
 
-            log_message = f"{datetime.now()} - Código: {response_mop.status_code}, Respuesta: {response_mop.text}\n"
+            log_message = f"Código: {response_mop.status_code}, Respuesta: {response_mop.text}\n"
 
         else:
-            log_message = f"{datetime.now()} - Error: No se encontraron valores en ThingSpeak.\n"
+            log_message = f"Error: No se encontraron valores en ThingSpeak.\n"
     else:
-        log_message = f"{datetime.now()} - Error: No hay datos en ThingSpeak.\n"
+        log_message = f"Error: No hay datos en ThingSpeak.\n"
 else:
-    log_message = f"{datetime.now()} - Error al obtener datos de ThingSpeak: {response.status_code}\n"
+    log_message = f"Error al obtener datos de ThingSpeak: {response.status_code}\n"
 
 # Guardar en un archivo log
 # with open("/ruta/del/log.txt", "a") as log_file:
