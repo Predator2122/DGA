@@ -1,0 +1,26 @@
+name: Ejecutar Script Diario
+
+on:
+  schedule:
+    - cron: "0 12 * * *"  # Corre todos los días a las 12:00 PM UTC
+
+jobs:
+  ejecutar-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3  # Descarga el código del repo
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Instalar dependencias
+        run: pip install requests
+
+      - name: Ejecutar el script con credenciales seguras
+        env:
+          THINGSPEAK_API_KEY: ${{ secrets.THINGSPEAK_API_KEY }}
+          MOP_PASSWORD: ${{ secrets.MOP_PASSWORD }}
+        run: python script.py
