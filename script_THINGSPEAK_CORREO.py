@@ -60,7 +60,7 @@ if response.status_code == 200:
     else:
         log_message = f"Error: No hay datos en ThingSpeak.\n"
 else:
-    log_message = f"Error al obtener datos de ThingSpeak: {response.status_code}\n  {log_message}"
+    log_message = f"Error al obtener datos de ThingSpeak: {response.status_code};{response_mop.text}\n  "
 
 # Guardar en un archivo log
 # with open("/ruta/del/log.txt", "a") as log_file:
