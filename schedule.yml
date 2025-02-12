@@ -2,8 +2,8 @@ name: Ejecutar Script Diario
 
 on:
   schedule:
-    - cron: "0 12 * * *"  # Corre todos los días a las 12:00 PM UTC
-
+    #- cron: "0 12 * * *"  # Corre todos los días a las 12:00 PM UTC
+    - cron: "*/10 * * * *"  # Se ejecuta cada 10 minutos
 jobs:
   ejecutar-script:
     runs-on: ubuntu-latest
