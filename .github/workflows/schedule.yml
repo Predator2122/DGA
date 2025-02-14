@@ -2,8 +2,8 @@ name: Ejecutar Script Cada 10 Minutos
 
 on:
   schedule:
-   # - cron: "*/10 * * * *"  # Se ejecuta cada 10 minutos
-   cron: "0 12 * * *"  # Corre todos los días a las 12:00 PM UTC
+   - cron: "* */24 * * *"  # Se ejecuta cada 10 minutos
+   
 
 jobs:
   ejecutar-script:
